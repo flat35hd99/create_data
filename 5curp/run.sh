@@ -1,5 +1,5 @@
 #!/bin/bash
-prefix=$TEMPLATE_PROJECT_PREFIX
+prefix=$PREFIX_CREATE_DATA
 
 module purge
 source $prefix/util/load_curp
