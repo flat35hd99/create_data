@@ -103,23 +103,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: output
           publish_branch: output
-
-  deploy-to-heroku:
-    needs: build-graph
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Download graphs
-        uses: actions/download-artifact@v3
-        with:
-          name: built-output
-          path: 6analyse/deployment/public
-
-      - uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          appdir: 6analyse/deployment
-          procfile: 6analyse/deployment/procfile
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
-          heroku_email: ${{secrets.HEROKU_EMAIL}}
